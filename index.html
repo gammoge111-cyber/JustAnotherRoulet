@@ -93,10 +93,10 @@ function rand(n){return Math.floor(Math.random()*n)}
 function makeDigits(){
  var d=Array.from({length:10},function(){return rand(10)});
  if(Math.random()<Math.min(.72,.2+S.levels.luck*.045)){
-  var kind=rand(6),x=rand(10),start=2+rand(5);
-  if(kind===0){var len=3+rand(3);for(var i=0;i<len;i++)d[start+i]=x}
+  var kind=rand(6),x=rand(10);
+  if(kind===0){var len=3+rand(3),start=1+rand(10-len);for(var i=0;i<len;i++)d[start+i]=x}
   if(kind===1){var a=rand(10),b=rand(10),c=rand(10);d.splice(4,6,a,b,c,c,b,a)}
-  if(kind===2){var len2=4+rand(3),up=Math.random()<.5,st=up?rand(10-len2):len2+rand(10-len2);for(var j=0;j<len2;j++)d[start+j]=up?st+j:st-j}
+  if(kind===2){var len2=4+rand(3),start2=1+rand(10-len2),up=Math.random()<.5,st=up?rand(11-len2):len2-1+rand(11-len2);for(var j=0;j<len2;j++)d[start2+j]=up?st+j:st-j}
   if(kind===3){for(var z=0;z<2+rand(3);z++)d[9-z]=0}
   if(kind===4){d[6]=d[4];d[7]=d[5];d[8]=d[4];d[9]=d[5]}
   if(kind===5){for(var q=0;q<4;q++)d[1+rand(9)]=7}
